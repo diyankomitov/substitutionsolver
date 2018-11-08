@@ -15,6 +15,8 @@ public class Main {
 
         Map<Character, Double> letterFrequency = initializeWordFrequency();
         findLetterFrequency(letterFrequency, input);
+
+        System.out.println(letterFrequency);
     }
 
     private static void findLetterFrequency(Map<Character, Double> frequencyMap, String string) {
@@ -23,7 +25,9 @@ public class Main {
         for (Character character : frequencyMap.keySet()) {
             double count = string.length() - string.replace(character.toString(), "").length();
 
-            frequencyMap.put(character, count/length);
+            if (count != length) {
+                frequencyMap.put(character, count/length);
+            }
         }
     }
 

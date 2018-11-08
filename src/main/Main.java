@@ -8,7 +8,13 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(new WordChecker().check("hello"));
+
+        String input = "hello";
+
+        System.out.println(new WordChecker().check(input));
+
+        Map<Character, Double> letterFrequency = initializeWordFrequency();
+        findLetterFrequency(letterFrequency, input);
     }
 
     private static void findLetterFrequency(Map<Character, Double> frequencyMap, String string) {

@@ -7,19 +7,20 @@ public class Decryptor {
     /**
      * Decrypts a given cipher with the given key and returns the decrypted plaintext
      * @param cipher the cipher to decrypt
-     * @param key the key to use which is a Map of letters to letters
+     * @param key the key to use which is a Map of letters to letters. The key map must have assigned
+     *            values for all characters that are in the cipher aka no cipher letter can be assigned to null
      * @return returns the decrypted plaintext
      */
     public static String decrypt(String cipher, Map<Character, Character> key) {
 
-        String plainText = cipher;
+        char[] plainText = cipher.toCharArray();
 
-        for (Character letter : key.keySet()){
 
-            plainText = plainText.replace(letter, key.get(letter));
+        for (int i = 0; i < plainText.length; i++) {
+            System.out.println(plainText[i]);
+            plainText[i] = key.get(plainText[i]);
         }
 
-        return plainText;
+        return new String(plainText);
     }
-
 }

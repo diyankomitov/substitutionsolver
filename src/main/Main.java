@@ -14,6 +14,7 @@ public class Main {
         System.out.println(new WordChecker().check(input));
 
         Map<Character, Double> letterFrequency = initializeLetterFrequency();
+        Map<Character,Character> cypherAlphabet = initializeCypherAlphabet();
         findLetterFrequency(letterFrequency, input);
 
         System.out.println(letterFrequency);
@@ -53,6 +54,37 @@ public class Main {
         keyMap.put(' ', ' ');
 
         System.out.println(Decryptor.decrypt(input, keyMap));
+    }
+
+    private static Map<Character, Character> initializeCypherAlphabet() {
+        Map<Character, Character> cypherAlphabet = new HashMap<>();
+        cypherAlphabet.put('a', 'a');
+        cypherAlphabet.put('b', 'b');
+        cypherAlphabet.put('c', 'c');
+        cypherAlphabet.put('d', 'd');
+        cypherAlphabet.put('e', 'e');
+        cypherAlphabet.put('f', 'f');
+        cypherAlphabet.put('g', 'g');
+        cypherAlphabet.put('h', 'h');
+        cypherAlphabet.put('i', 'i');
+        cypherAlphabet.put('j', 'j');
+        cypherAlphabet.put('k', 'k');
+        cypherAlphabet.put('l', 'l');
+        cypherAlphabet.put('m', 'm');
+        cypherAlphabet.put('n', 'n');
+        cypherAlphabet.put('o', 'o');
+        cypherAlphabet.put('p', 'p');
+        cypherAlphabet.put('q', 'q');
+        cypherAlphabet.put('r', 'r');
+        cypherAlphabet.put('s', 's');
+        cypherAlphabet.put('t', 't');
+        cypherAlphabet.put('u', 'u');
+        cypherAlphabet.put('v', 'v');
+        cypherAlphabet.put('w', 'w');
+        cypherAlphabet.put('x', 'x');
+        cypherAlphabet.put('y', 'y');
+        cypherAlphabet.put('z', 'z');
+        return cypherAlphabet;
     }
 
     private static void findLetterFrequency(Map<Character, Double> frequencyMap, String string) {

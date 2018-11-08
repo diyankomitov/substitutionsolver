@@ -1,6 +1,7 @@
 package main;
 
 import dictionary.WordChecker;
+import dictionary.WordFrequency;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +21,8 @@ public class Main {
         System.out.println(letterFrequency);
 
         decipherTest(input);
+
+        new WordFrequency("hello");
 
     }
 

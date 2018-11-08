@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class WordFrequency {
 
-    public WordFrequency(){
+    public WordFrequency(String WORD){
         ArrayList<String> frequencyEnglish = new ArrayList<>();
 
         try {
@@ -18,10 +18,13 @@ public class WordFrequency {
         } catch (IOException e) {
             e.printStackTrace();
         }
+            if (frequencyEnglish.contains(WORD)) {
+                System.out.println(WORD + " was found at : " + frequencyEnglish.indexOf(WORD));
+            }
 
-        for (String aFrequencyEnglish : frequencyEnglish) {
-            System.out.println(aFrequencyEnglish);
-        }
+
+
+
 
 
     }

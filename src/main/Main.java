@@ -13,7 +13,7 @@ public class Main {
 
         System.out.println(new WordChecker().check(input));
 
-        Map<Character, Double> letterFrequency = initializeWordFrequency();
+        Map<Character, Double> letterFrequency = initializeLetterFrequency();
         findLetterFrequency(letterFrequency, input);
 
         System.out.println(letterFrequency);
@@ -61,7 +61,7 @@ public class Main {
         return englishFrequencyMap;
     }
 
-    private static Map<Character, Double> initializeWordFrequency() {
+    private static Map<Character, Double> initializeLetterFrequency() {
         Map<Character, Double> wordFrequencyMap = new HashMap<>();
         wordFrequencyMap.put('a', 0.0);
         wordFrequencyMap.put('b', 0.0);

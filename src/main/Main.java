@@ -2,6 +2,7 @@ package main;
 
 import dictionary.WordChecker;
 import dictionary.WordFrequency;
+import dictionary.inDictionary;
 import patternmatcher.Pattern;
 
 import java.util.*;
@@ -22,7 +23,7 @@ public class Main {
         }
 
 
-            patternMatch("abbc");
+            patternMatch("hello");
      
 
 //        System.out.println(areKeysCompatible(makeKey("ptjc", "send"), makeKey("t", "s"))); //tests if arekeyscompatible works
@@ -50,7 +51,10 @@ public class Main {
         List<String> wordsMatchingPattern = wordChecker.getWordsMatchingPattern(wordPattern); // gets all words of same size and with same letter pattern as word.
         System.out.println("Found " + wordsMatchingPattern.size() + " words matching the pattern: " +wordPattern);
         for(String matchingWord : wordsMatchingPattern){
-            System.out.println("possible match: " +matchingWord);
+            if(new inDictionary(matchingWord).isWord(matchingWord)){
+                System.out.println("possible match: " +matchingWord);
+            }
+            //System.out.println("possible match: " +matchingWord);
         }
         //TODO: Something something do something idk what haha
         return true;

@@ -21,7 +21,11 @@ public class Main {
             inputPatterns[i] = Pattern.convert(inputWords[i]);
         }
 
-        //System.out.println(areKeysCompatible(makeKey("ptjc", "send"), makeKey("t", "s"))); //tests if arekeyscompatible works
+
+            patternMatch("abbc");
+     
+
+//        System.out.println(areKeysCompatible(makeKey("ptjc", "send"), makeKey("t", "s"))); //tests if arekeyscompatible works
 
 
         System.out.println(new WordChecker().check(input));
@@ -32,17 +36,22 @@ public class Main {
 
         System.out.println(letterFrequency);
 
+
         decipherTest(input);
 
         new WordFrequency("hello");
 
     }
 
+    //TODO: Need to be able to lock exact letters for pattern match when we have values we are certain of/want to test.
     private static boolean patternMatch(String word) {
 
         String wordPattern = Pattern.convert(word);
-        List<String> wordsMatchingPattern = wordChecker.getWordsMatchingPattern(wordPattern);
-
+        List<String> wordsMatchingPattern = wordChecker.getWordsMatchingPattern(wordPattern); // gets all words of same size and with same letter pattern as word.
+        System.out.println("Found " + wordsMatchingPattern.size() + " words matching the pattern: " +wordPattern);
+        for(String matchingWord : wordsMatchingPattern){
+            System.out.println("possible match: " +matchingWord);
+        }
         //TODO: Something something do something idk what haha
         return true;
     }

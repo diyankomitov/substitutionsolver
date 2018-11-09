@@ -34,8 +34,6 @@ public class Pattern {
 
         }
 
-        System.out.println(new String(converted));
-
         return new String(converted);
     }
 

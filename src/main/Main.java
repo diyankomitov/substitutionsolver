@@ -23,7 +23,7 @@ public class Main {
         }
 
 
-            patternMatch("hello");
+            patternMatch("htpprot");
      
 
 //        System.out.println(areKeysCompatible(makeKey("ptjc", "send"), makeKey("t", "s"))); //tests if arekeyscompatible works

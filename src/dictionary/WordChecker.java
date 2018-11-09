@@ -31,7 +31,7 @@ public class WordChecker {
                 dictionaryWords.add(word);
             }
         }
-        
+
         return dictionaryWords;
     }
 

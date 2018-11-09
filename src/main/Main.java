@@ -2,15 +2,27 @@ package main;
 
 import dictionary.WordChecker;
 import dictionary.WordFrequency;
+import patternmatcher.Pattern;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
+
+    private static final WordChecker wordChecker = new WordChecker();
 
     public static void main(String[] args) {
 
         String input = "ptjc r htpprot qk zkpt vbqn qnt vkzc vbyrzc rjc xksz qtrh jrht qk otq qnt jtwq agst";
+
+        String[] inputWords = input.split(" ");
+        String[] inputPatterns = new String[inputWords.length];
+
+        for (int i = 0; i < inputWords.length; i++) {
+            inputPatterns[i] = Pattern.convert(inputWords[i]);
+        }
+
+        //System.out.println(areKeysCompatible(makeKey("ptjc", "send"), makeKey("t", "s"))); //tests if arekeyscompatible works
+
 
         System.out.println(new WordChecker().check(input));
 
@@ -25,6 +37,64 @@ public class Main {
         new WordFrequency("hello");
 
     }
+
+    private static boolean patternMatch(String word) {
+
+        String wordPattern = Pattern.convert(word);
+        List<String> wordsMatchingPattern = wordChecker.getWordsMatchingPattern(wordPattern);
+
+        //TODO: Something something do something idk what haha
+        return true;
+    }
+
+
+    private static Map<Character, Character> makeKey(String keys, String values) {
+        char[] keyChars = keys.toCharArray();
+        char[] valueChars = values.toCharArray();
+
+        Map<Character, Character> keyMap = new HashMap<>();
+
+        for (int i = 0; i < keyChars.length; i++) {
+            keyMap.put(keyChars[i], valueChars[i]);
+        }
+
+        return keyMap;
+    }
+
+    private static boolean areKeysCompatible(Map<Character, Character> key1, Map<Character, Character> key2) {
+
+        Set<Character> keyset = new HashSet<>();
+        keyset.addAll(key1.keySet());
+        keyset.addAll(key2.keySet());
+
+        Set<Character> valuesSet = new HashSet<>();
+
+        for (Character character : keyset) {
+            Character char1 = key1.get(character);
+            Character char2 = key2.get(character);
+            System.out.println(char1 + " : " + char2);
+
+            if (char1 != null && char2 != null && !char1.equals(char2)) {
+                return false;
+            }
+
+            if (valuesSet.contains(char1) || valuesSet.contains(char2)) {
+                return false;
+            }
+
+            if (char1 != null) {
+                valuesSet.add(char1);
+            }
+
+            if (char2 != null) {
+                valuesSet.add(char2);
+            }
+        }
+
+        return true;
+    }
+
+
 
     private static void decipherTest(String input) {
         Map<Character,Character> keyMap = new HashMap<>();

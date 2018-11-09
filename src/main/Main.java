@@ -51,7 +51,7 @@ public class Main {
         List<String> wordsMatchingPattern = wordChecker.getWordsMatchingPattern(wordPattern); // gets all words of same size and with same letter pattern as word.
         System.out.println("Found " + wordsMatchingPattern.size() + " words matching the pattern: " +wordPattern);
         for(String matchingWord : wordsMatchingPattern){
-            if(new inDictionary(matchingWord).isWord(matchingWord)){
+            if(new inDictionary().isWord(matchingWord)){
                 System.out.println("possible match: " +matchingWord);
             }
             //System.out.println("possible match: " +matchingWord);

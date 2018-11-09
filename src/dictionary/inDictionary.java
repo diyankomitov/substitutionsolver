@@ -10,7 +10,7 @@ public class inDictionary {
 
     ArrayList<String> DictionaryWord = new ArrayList<>();
 
-    public inDictionary (String WORD){
+    public inDictionary (){
 
         try {
             Stream<String> stream = Files.lines(Paths.get("dictionary.txt"));
@@ -19,10 +19,6 @@ public class inDictionary {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (DictionaryWord.contains(WORD)) {
-            System.out.println(WORD + " was found at : " + DictionaryWord.indexOf(WORD));
-        }
-
     }
 
     public boolean isWord(String WORD) {

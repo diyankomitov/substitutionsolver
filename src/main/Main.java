@@ -60,15 +60,19 @@ public class Main {
         for(String matchingWord : wordsMatchingPattern) {
             if (new inDictionary().isWord(matchingWord)) {
                 if (new WordFrequency(matchingWord).isWord(matchingWord)) {
+                    //if the word is contained in frequency.txt add to array
                     possibleWords.add(matchingWord);
                 }
             }
         }
 
+        //from all the words in POSSIBLEWORDS array, get their line numbers and add them to ANSWER array
+
         for (int i = 0; i < possibleWords.size(); i++){
             if (new WordFrequency(possibleWords.get(i)).getLine(possibleWords.get(i)) < minValue);{
                 answer.add(new WordFrequency(possibleWords.get(i)).getLine(possibleWords.get(i)));
-               // System.out.println(answer);
+
+                //find smallest number in ANSWER array // smallest number == more frequent word
                 for (int j = 0; j < answer.size(); j++){
                     if (answer.get(j) < minValue){
                         minValue = answer.get(j);
@@ -78,10 +82,10 @@ public class Main {
             }
         }
 
-
+        //take smallest number from ANSWER array and get corresponding word from frequency.txt
         System.out.println(new WordFrequency("").getWORD(minValue));
 
-        //System.out.println("possible match: " +matchingWord);
+
 
         //System.out.println("possible match: " +matchingWord);
 

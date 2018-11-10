@@ -11,14 +11,14 @@ import java.util.stream.Stream;
 public class WordChecker {
 
     private final Map<String, List<String>> dictionaryPatterns;
-    private final Set<String> dictionaryValues;
+    private final List<String> dictionaryValues;
 
     public WordChecker() {
         dictionaryPatterns = new HashMap<>();
-        dictionaryValues = new HashSet<>();
+        dictionaryValues = new ArrayList<>();
 
         try {
-            Stream<String> stream = Files.lines(Paths.get("words_alpha.txt"));
+            Stream<String> stream = Files.lines(Paths.get("Dictionary100k.txt"));
             stream.forEach(line -> {
                 String patternedLine = Pattern.convert(line.toLowerCase().trim());
 
@@ -27,15 +27,15 @@ public class WordChecker {
                 if (patternValues == null || patternValues.isEmpty()) {
 
                     List<String> newValues = new ArrayList<>();
-                    newValues.add(line);
+                    newValues.add(line.toLowerCase());
 
                     dictionaryPatterns.put(patternedLine, newValues);
                 }
                 else {
-                    patternValues.add(line);
+                    patternValues.add(line.toLowerCase());
                 }
 
-                dictionaryValues.add(line);
+                dictionaryValues.add(line.toLowerCase());
             });
 
         } catch (IOException e) {

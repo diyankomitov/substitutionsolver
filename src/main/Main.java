@@ -47,7 +47,8 @@ public class Main {
     }
 
     //TODO: Need to be able to lock exact letters for pattern match when we have values we are certain of/want to test.
-    private static boolean patternMatch(String word) {
+    //TODO: Possibly look into word length i.e. longer/more complex the word is e.g. MESSAGE,  more likely the correct substitution
+        private static boolean patternMatch(String word) {
 
         int minValue = 5001;
 

@@ -8,8 +8,10 @@ import java.util.stream.Stream;
 
 public class WordFrequency {
 
+    ArrayList<String> frequencyEnglish = new ArrayList<>();
+
     public WordFrequency(String WORD){
-        ArrayList<String> frequencyEnglish = new ArrayList<>();
+
 
         try {
             Stream<String> stream = Files.lines(Paths.get("wordFrequency.txt"));
@@ -18,14 +20,26 @@ public class WordFrequency {
         } catch (IOException e) {
             e.printStackTrace();
         }
-            if (frequencyEnglish.contains(WORD)) {
-                System.out.println(WORD + " was found at : " + frequencyEnglish.indexOf(WORD));
-            }
+//            if (frequencyEnglish.contains(WORD)) {
+//                System.out.println(WORD + " was found at : " + frequencyEnglish.indexOf(WORD));
+//            }
+    }
 
+    public int getLine (String WORD) {
+        return frequencyEnglish.indexOf(WORD);
+    }
+    public String getWORD(int line){
+        return frequencyEnglish.get(line);
+    }
 
+    public boolean isWord(String WORD) {
 
-
-
+        if (frequencyEnglish.contains(WORD)){
+            return true;
+        }
+        else{
+            return false;
+        }
 
     }
 

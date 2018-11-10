@@ -13,18 +13,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String input = "ptjc r htpprot qk zkpt vbqn qnt vkzc vbyrzc rjc xksz qtrh jrht qk otq qnt jtwq agst";
+        // String input = "ptjc r htpprot qk zkpt vbqn qnt vkzc vbyrzc rjc xksz qtrh jrht qk otq qnt jtwq agst";
 
+        String input = "ptjc r htpprot qk zkpt vbqn qnt vkzc vbyrzc rjc xksz qtrh jrht qk otq qnt jtwq agst";
         String[] inputWords = input.split(" ");
         String[] inputPatterns = new String[inputWords.length];
 
         for (int i = 0; i < inputWords.length; i++) {
             inputPatterns[i] = Pattern.convert(inputWords[i]);
+            patternMatch(inputWords[i]);
         }
 
 
-            patternMatch("htpprot");
-     
+        //    patternMatch("htpprot test");
+
 
 //        System.out.println(areKeysCompatible(makeKey("ptjc", "send"), makeKey("t", "s"))); //tests if arekeyscompatible works
 
@@ -47,15 +49,44 @@ public class Main {
     //TODO: Need to be able to lock exact letters for pattern match when we have values we are certain of/want to test.
     private static boolean patternMatch(String word) {
 
+        int minValue = 5001;
+
+        ArrayList<String> possibleWords = new ArrayList<>();
+        ArrayList<Integer> answer = new ArrayList<>();
         String wordPattern = Pattern.convert(word);
         List<String> wordsMatchingPattern = wordChecker.getWordsMatchingPattern(wordPattern); // gets all words of same size and with same letter pattern as word.
         System.out.println("Found " + wordsMatchingPattern.size() + " words matching the pattern: " +wordPattern);
-        for(String matchingWord : wordsMatchingPattern){
-            if(new inDictionary().isWord(matchingWord)){
-                System.out.println("possible match: " +matchingWord);
+        for(String matchingWord : wordsMatchingPattern) {
+            if (new inDictionary().isWord(matchingWord)) {
+                if (new WordFrequency(matchingWord).isWord(matchingWord)) {
+                    possibleWords.add(matchingWord);
+                }
             }
-            //System.out.println("possible match: " +matchingWord);
         }
+
+        for (int i = 0; i < possibleWords.size(); i++){
+            if (new WordFrequency(possibleWords.get(i)).getLine(possibleWords.get(i)) < minValue);{
+                answer.add(new WordFrequency(possibleWords.get(i)).getLine(possibleWords.get(i)));
+               // System.out.println(answer);
+                for (int j = 0; j < answer.size(); j++){
+                    if (answer.get(j) < minValue){
+                        minValue = answer.get(j);
+                    }
+                }
+
+            }
+        }
+
+
+        System.out.println(new WordFrequency("").getWORD(minValue));
+
+        //System.out.println("possible match: " +matchingWord);
+
+        //System.out.println("possible match: " +matchingWord);
+
+
+
+
         //TODO: Something something do something idk what haha
         return true;
     }

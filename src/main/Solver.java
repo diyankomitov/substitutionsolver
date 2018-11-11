@@ -1,7 +1,7 @@
 package main;
 
 import dictionary.WordChecker;
-import patternmatcher.Pattern;
+import pattern.Pattern;
 
 import java.util.*;
 
@@ -16,23 +16,20 @@ public class Solver {
 
         List<String> inputWords = Arrays.asList(input.split(" "));
 
-        patternMatch(new ArrayList<>(), inputWords, new HashMap<>());
+        solve(new ArrayList<>(), inputWords, new HashMap<>());
 
         potentialMatches.forEach(System.out::println);
     }
 
-    private static void patternMatch(List<String> current, List<String> next, Map<Character, Character> previousKey) {
+    private static void solve(List<String> current, List<String> next, Map<Character, Character> previousKey) {
 
-        if (potentialMatches.size() < 10) {     // Cap at 10 or it goes forever
+        if (potentialMatches.size() < 10) {     // Cap at 10 or it keeps going until it tries all words in the dictionary
 
             if (next.isEmpty()) {
                 // We have a match
                 potentialMatches.add(String.join(" ", current));
-            }
-            else {
-
+            } else {
                 // No match yet
-
                 String first = next.get(0);
                 String wordPattern = Pattern.convert(first);
                 List<String> wordsMatchingPattern = wordChecker.getWordsMatchingPattern(wordPattern);
@@ -51,7 +48,7 @@ public class Solver {
 
                         Map<Character, Character> newPreviousKey = combineKeys(previousKey, key);
 
-                        patternMatch(newCurrent, newNext, newPreviousKey);
+                        solve(newCurrent, newNext, newPreviousKey);
                     }
                 }
             }
@@ -60,6 +57,7 @@ public class Solver {
 
 
     private static Map<Character, Character> makeKey(String keys, String values) {
+
         char[] keyChars = keys.toCharArray();
         char[] valueChars = values.toCharArray();
 

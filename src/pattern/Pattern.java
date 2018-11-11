@@ -1,4 +1,4 @@
-package patternmatcher;
+package pattern;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,8 +24,7 @@ public class Pattern {
 
             if (nextPatternChar != null) {
                 converted[i] = nextPatternChar;
-            }
-            else {
+            } else {
                 nextPatternChar = alphabet[alphabetIndex];
                 patternMap.put(next, nextPatternChar);
                 converted[i] = nextPatternChar;
